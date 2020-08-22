@@ -9,6 +9,7 @@ var cors = require("cors");
 //var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var stockRouter = require("./routes/stocks");
+var testRouter = require("./routes/test");
 
 //const swaggerUI = require("swagger-ui-express");
 //const swaggerDocument = require("./docs/swaggerpet.json");
@@ -32,6 +33,7 @@ app.use((req, res, next) => {
 
 app.use("/user", usersRouter);
 app.use("/stocks", stockRouter);
+app.use("/tests", testRouter);
 
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
