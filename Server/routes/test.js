@@ -43,13 +43,9 @@ router.get("/symbols", async function (req, res) {
 });
 
 router.get("/google", async function (req, res) {
-  const googleURL = `https://maps.googleapis.com/maps/api/directions/json?origin=
-    -27.4732, 153.0215
-  &destination=
-    -27.471204, 153.025268
-  &key=AIzaSyDJKoVIlwxHJiMd1ARDZ_WVnwvj18Y0uug`;
-  await axios.get(googleURL).then((response) => {
-    console.log(response);
+  const URL = `http://api.openweathermap.org/data/2.5/weather?lat=-27&lon=153&appid=497120c5cd83232f9fa735837f6399a1`;
+  axios.get(URL).then((response) => {
+    res.json(response.data);
   });
 });
 
