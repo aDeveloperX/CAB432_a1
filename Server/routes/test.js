@@ -33,7 +33,7 @@ const getCity = async () => {
 
 router.get("/coordinates", async function (req, res) {
   let coordinates = await getCoordiates();
-  console.log("get");
+
   res.json({
     latitude: coordinates.latitude,
     longitude: coordinates.longitude,
@@ -42,12 +42,12 @@ router.get("/coordinates", async function (req, res) {
 
 router.get("/businesses", async function (req, res) {
   let city = await getCity();
-
-  await axios
+  console.log(req.query);
+  axios
     .get("https://api.yelp.com/v3/businesses/search", {
       params: {
-        limit: 10,
-        term: req.params.term,
+        limit: 15,
+        term: req.query.term,
         location: city,
       },
       headers: {
@@ -61,8 +61,9 @@ router.get("/businesses", async function (req, res) {
     });
 });
 
-router.get("/google", async function (req, res) {
-  const URL = `http://api.openweathermap.org/data/2.5/weather?lat=-27&lon=153&appid=497120c5cd83232f9fa735837f6399a1`;
+router.get("/weather", function (req, res) {
+  console.log(req.query);
+  const URL = `http://api.openweathermap.org/data/2.5/weather?lat=${req.query.lat}&lon=${req.query.lon}&appid=497120c5cd83232f9fa735837f6399a1`;
   axios.get(URL).then((response) => {
     res.json(response.data);
   });

@@ -7,15 +7,14 @@ const Input = (props) => {
     setValue(e.target.value);
   };
 
-  const buttonHandler = async () => {
+  const buttonHandler = () => {
     if (value === "") {
       alert("Search term cannot be empty");
       return;
     }
-    await axios
-      .get("http://localhost:3000/tests/businesses", {
-        params: { term: value },
-      })
+
+    axios
+      .get(`http://localhost:3000/tests/businesses?term=${value}`)
       .then((response) => props.setResults(response.data));
   };
   return (

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import GoogleMapReact from "google-map-react";
+import Pin from "./Pin";
 import axios from "axios";
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
@@ -15,14 +16,13 @@ const Map = (props) => {
   }, []);
 
   const results = props.results.map((each) => (
-    <AnyReactComponent
+    <Pin
+      business={each}
+      key={each.id}
       lat={each.coordinates.latitude}
       lng={each.coordinates.longitude}
-      text={each.name}
     />
   ));
-
-  console.log(results);
 
   return center === undefined ? null : (
     // Important! Always set the container height explicitly
