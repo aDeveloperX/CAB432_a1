@@ -4,11 +4,12 @@ import Input from "./Input";
 
 const Container = () => {
   const [results, setResults] = useState([]);
-  console.log(results);
+  const [center, setCenter] = useState();
+  console.log("rerender", center);
   return (
     <div style={{ textAlign: "center" }}>
-      <Input setResults={setResults}></Input>
-      <Map results={results}></Map>
+      <Input setCenter={setCenter} setResults={setResults}></Input>
+      <Map results={results} center={center}></Map>
     </div>
   );
 };

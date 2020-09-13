@@ -2,7 +2,7 @@ import React from "react";
 
 const DetailView = ({ business, weather, dismiss }) => {
   const categories = business.categories.map((each) => (
-    <p>{"Categories: " + each.title}</p>
+    <p key={each.title}>{"Categories: " + each.title}</p>
   ));
   console.log(weather);
   return (

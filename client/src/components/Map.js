@@ -3,18 +3,8 @@ import GoogleMapReact from "google-map-react";
 import Pin from "./Pin";
 import axios from "axios";
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
 const apiKey = "AIzaSyAoV6Q1CZGGGahEeCKSjTJpnHzRvf9vDBE";
 const Map = (props) => {
-  const [center, setCenter] = useState();
-
-  useEffect(() => {
-    axios.get("http://localhost:3000/tests/coordinates").then((response) => {
-      console.log(response.data);
-      setCenter({ lat: response.data.latitude, lng: response.data.longitude });
-    });
-  }, []);
-
   const results = props.results.map((each) => (
     <Pin
       business={each}
@@ -24,12 +14,19 @@ const Map = (props) => {
     />
   ));
 
-  return center === undefined ? null : (
+  const center =
+    props.center === undefined
+      ? { lat: -27.457371, lng: 153.033438 }
+      : props.center;
+
+  console.log("center: ", center);
+
+  return (
     // Important! Always set the container height explicitly
     <div style={{ height: "100vh", width: "100%" }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: apiKey }}
-        defaultCenter={center}
+        center={center}
         defaultZoom={12}
       >
         {results}
