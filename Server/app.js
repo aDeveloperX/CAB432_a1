@@ -6,9 +6,6 @@ var logger = require("morgan");
 const helmet = require("helmet");
 var cors = require("cors");
 
-//var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
-var stockRouter = require("./routes/stocks");
 var testRouter = require("./routes/test");
 
 //const swaggerUI = require("swagger-ui-express");
@@ -31,8 +28,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/user", usersRouter);
-app.use("/stocks", stockRouter);
 app.use("/tests", testRouter);
 
 app.use(function (err, req, res, next) {

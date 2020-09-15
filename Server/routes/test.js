@@ -4,7 +4,7 @@ var router = express.Router();
 
 const yelp_token =
   "FRctOPFioCkEGcaF8pBiMh6ymEeSSEyBzJvJyWazLN_aKIS1J4bQcwsYEKKDgpIVg037FfMyN3rHrRTmDftDHsI3SZfXuPp5B8Ol0I7KEPROaYhOTy4LfqTOAvHqXXYx";
-
+const weatherAPIkey = "497120c5cd83232f9fa735837f6399a1";
 router.get("/coordinates", async function (req, res) {
   const address = req.query.address;
   let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyAoV6Q1CZGGGahEeCKSjTJpnHzRvf9vDBE`;
@@ -34,7 +34,7 @@ router.get("/businesses", async function (req, res) {
 
 router.get("/weather", function (req, res) {
   console.log(req.query);
-  const URL = `http://api.openweathermap.org/data/2.5/weather?lat=${req.query.lat}&lon=${req.query.lon}&appid=497120c5cd83232f9fa735837f6399a1`;
+  const URL = `http://api.openweathermap.org/data/2.5/weather?lat=${req.query.lat}&lon=${req.query.lon}&appid=${weatherAPIkey}`;
   axios.get(URL).then((response) => {
     res.json(response.data);
   });

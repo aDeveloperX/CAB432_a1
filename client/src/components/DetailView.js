@@ -4,7 +4,7 @@ const DetailView = ({ business, weather, dismiss }) => {
   const categories = business.categories.map((each) => (
     <p key={each.title}>{"Categories: " + each.title}</p>
   ));
-  console.log(weather);
+
   return (
     <div
       style={{

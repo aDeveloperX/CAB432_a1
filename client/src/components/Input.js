@@ -32,12 +32,14 @@ const Input = (props) => {
         }
       })
       .then((res) => {
+        if (!res) {
+          return;
+        }
         axios
           .get(
             `http://localhost:3000/tests/businesses?term=${value}&latitude=${res.lat}&longitude=${res.lng}`
           )
           .then((response) => {
-            console.log(response);
             if (response.data.length === 0) {
               alert("no restaurant found, try another keyword");
             }
