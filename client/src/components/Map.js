@@ -3,7 +3,7 @@ import GoogleMapReact from "google-map-react";
 import Pin from "./Pin";
 import axios from "axios";
 
-const apiKey = "AIzaSyAoV6Q1CZGGGahEeCKSjTJpnHzRvf9vDBE";
+const apiKey = "something";
 const Map = (props) => {
   const results = props.results.map((each) => (
     <Pin
